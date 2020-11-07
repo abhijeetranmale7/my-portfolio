@@ -8,7 +8,7 @@ import Footer from '../components/Footer'
 const Home = () => {
     return (
         <div id="page-top">
-            <Navbar />
+            <Navbar page="home" />
             <Profile />
             <Services />
             <Portfolio />

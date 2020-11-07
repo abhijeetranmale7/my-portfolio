@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from "react-router-dom"
+import projects from '../helper/projects'
 
 const Portfolio = () => {
     return (
@@ -9,18 +11,26 @@ const Portfolio = () => {
                     <h2 className="mb-5">Recent Projects</h2>
                 </div>
                 <div className="row no-gutters">
-                    <div className="col-lg-6">
-                        <a className="portfolio-item" href="#!">
-                            <div className="caption">
-                                <div className="caption-content">
-                                    <div className="h2">Stationary</div>
-                                    <p className="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
-                                </div>
+                    {
+                        projects.map((item, i) => {
+                            return <div className="col-lg-6" key={i}>
+                                <Link className="portfolio-item" to={"/project-details/" + item.slug}>
+                                    <div className="caption">
+                                        <div className="caption-content">
+                                            <div className="h2">{item.title}</div>
+                                            <p className="mb-0">{item.description}</p>
+                                        </div>
+                                    </div>
+                                    <img className="img-fluid" src={item.images[0]} style={{
+                                        maxWidth: "100%",
+                                        display: "block",
+                                        height: "300px"
+                                    }} alt="" />
+                                </Link>
                             </div>
-                            <img className="img-fluid" src="img/portfolio-1.jpg" alt="" />
-                        </a>
-                    </div>
-                    <div className="col-lg-6">
+                        })
+                    }
+                    {/* <div className="col-lg-6">
                         <a className="portfolio-item" href="#!">
                             <div className="caption">
                                 <div className="caption-content">
@@ -52,7 +62,7 @@ const Portfolio = () => {
                             </div>
                             <img className="img-fluid" src="img/portfolio-4.jpg" alt="" />
                         </a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>
